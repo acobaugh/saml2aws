@@ -11,13 +11,11 @@ ci: deps test
 
 deps:
 	go get github.com/buildkite/github-release
-	go get -u github.com/golang/dep/cmd/dep
 	go get -u github.com/mitchellh/gox
 	go get -u github.com/alecthomas/gometalinter
 	go get -u github.com/axw/gocov/...
 	go get -u golang.org/x/tools/cmd/cover
 	gometalinter --install
-	dep ensure
 
 compile:
 	@rm -rf build/
