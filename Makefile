@@ -7,15 +7,16 @@ SOURCE_FILES?=$$(go list ./... | grep -v /vendor/)
 TEST_PATTERN?=.
 TEST_OPTIONS?=
 
+GOLANGCI_VERSION="v1.17.1"
+
 ci: deps test
 
 deps:
 	go get github.com/buildkite/github-release
 	go get -u github.com/mitchellh/gox
-	go get -u github.com/alecthomas/gometalinter
 	go get -u github.com/axw/gocov/...
 	go get -u golang.org/x/tools/cmd/cover
-	gometalinter --install
+	curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin $(GOLANGCI_VERSION)
 
 compile:
 	@rm -rf build/
@@ -30,7 +31,7 @@ compile:
 
 # Run all the linters
 lint:
-	gometalinter --vendor ./...
+	golangci-lint run
 
 # gofmt and goimports all go files
 fmt:
