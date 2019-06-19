@@ -15,13 +15,17 @@ require (
 	github.com/aws/aws-sdk-go v1.14.8
 	github.com/beevik/etree v1.0.1
 	github.com/briandowns/spinner v0.0.0-20170614154858-48dbb65d7bd5
+	github.com/buildkite/github-release v0.0.0-20180509221815-fcccd113f8a6 // indirect
 	github.com/danieljoos/wincred v1.0.1
 	github.com/davecgh/go-spew v1.1.0 // indirect
 	github.com/dvsekhvalnov/jose2go v0.0.0-20170216131308-f21a8cedbbae // indirect
 	github.com/fatih/color v1.7.0 // indirect
 	github.com/go-ini/ini v1.37.0 // indirect
 	github.com/godbus/dbus v0.0.0-20181101234600-2ff6f7ffd60f // indirect
+	github.com/google/go-github v17.0.0+incompatible // indirect
+	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/gsterjov/go-libsecret v0.0.0-20161001094733-a6f4afe4910c // indirect
+	github.com/hashicorp/go-version v1.2.0 // indirect
 	github.com/headzoo/surf v0.0.0-20180909134844-a4a8c16c01dc
 	github.com/headzoo/ut v0.0.0-20181013193318-a13b5a7a02ca // indirect
 	github.com/jmespath/go-jmespath v0.0.0-20160202185014-0b12d6b521d8 // indirect
@@ -31,6 +35,8 @@ require (
 	github.com/mattn/go-isatty v0.0.3 // indirect
 	github.com/mgutz/ansi v0.0.0-20170206155736-9520e82c474b // indirect
 	github.com/mitchellh/go-homedir v0.0.0-20180523094522-3864e76763d9
+	github.com/mitchellh/gox v1.0.1 // indirect
+	github.com/oleiade/reflections v1.0.0 // indirect
 	github.com/onsi/ginkgo v1.8.0 // indirect
 	github.com/onsi/gomega v1.5.0 // indirect
 	github.com/pkg/errors v0.8.0
@@ -43,6 +49,7 @@ require (
 	github.com/tidwall/gjson v1.1.1
 	github.com/tidwall/match v1.0.0 // indirect
 	golang.org/x/net v0.0.0-20190311183353-d8887717615a
+	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45 // indirect
 	gopkg.in/AlecAivazis/survey.v1 v1.5.3 // indirect
 	gopkg.in/airbrake/gobrake.v2 v2.0.9 // indirect
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect

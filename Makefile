@@ -2,21 +2,23 @@ NAME=saml2aws
 ARCH=$(shell uname -m)
 VERSION=2.15.0
 ITERATION := 1
+GOLANGCI_VERSION="v1.17.1"
 
 SOURCE_FILES?=$$(go list ./... | grep -v /vendor/)
 TEST_PATTERN?=.
 TEST_OPTIONS?=
 
-GOLANGCI_VERSION="v1.17.1"
+GOLANGCI_INSTALLED := $(shell which golangci-lint)
+GO111MODULE=on
 
 ci: deps test
 
 deps:
 	go get github.com/buildkite/github-release
 	go get -u github.com/mitchellh/gox
-	go get -u github.com/axw/gocov/...
-	go get -u golang.org/x/tools/cmd/cover
-	curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(go env GOPATH)/bin $(GOLANGCI_VERSION)
+ifndef GOLANGCI_INSTALLED
+	curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s $(GOLANGCI_VERSION)
+endif
 
 compile:
 	@rm -rf build/
@@ -53,7 +55,7 @@ release:
 	@github-release "v$(VERSION)" dist/* --commit "$(git rev-parse HEAD)" --github-repository versent/$(NAME)
 
 test:
-	@gocov test $(SOURCE_FILES) | gocov report
+	@go test -v -cover ./...
 
 clean:
 	@rm -fr ./build
