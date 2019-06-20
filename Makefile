@@ -13,11 +13,11 @@ GO111MODULE=on
 
 ci: deps test
 
-deps: export GO111MODULE=off
 deps:
-	go get github.com/buildkite/github-release
-	go get -u github.com/mitchellh/gox
-	go get -u github.com/axw/gocov/gocov
+	GO111MODULE=off go get -u github.com/myitcv/gobin
+	gobin github.com/buildkite/github-release
+	gobin github.com/mitchellh/gox
+	gobin github.com/axw/gocov/gocov
 ifndef GOLANGCI_INSTALLED
 	curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s $(GOLANGCI_VERSION)
 endif
@@ -57,7 +57,7 @@ release:
 	@github-release "v$(VERSION)" dist/* --commit "$(git rev-parse HEAD)" --github-repository versent/$(NAME)
 
 test:
-	@gocov test ./... | gocov convert
+	@gocov test ./... | gocov report
 
 clean:
 	@rm -fr ./build
